@@ -1,26 +1,24 @@
 import { useState } from "react";
-import api from "./api/api.js";
+import { useDispatch } from "react-redux";
 import SearchForm from "./components/searchForm/SearchForm.js";
 import Posts from "./components/posts/Posts.js";
+import {
+  loadPopular,
+  searchPosts
+} from "./components/posts/reducer.js";
 import reddit_logo_icon from "./reddit-logo-icon.svg";
 import reddit_logo_text from "./reddit-logo-text.svg";
 
 function App() {
   const [query, setQuery] = useState("");
-  const [posts, setPosts] = useState([]);
-  const loadPopular = () => {
-    api.loadPopular().then((JSON) => {
-      const { children } = JSON.data;
-      setPosts(children);
-    });
+  const dispatch = useDispatch();
+  const handleLoadPopular = () => {
+    dispatch(loadPopular());
   };
-  const searchPosts = (e) => {
+  const handleSearchPosts = (e) => {
     e.preventDefault();
+    dispatch(searchPosts(query));
     // setQuery("");
-    api.searchPosts(query).then((JSON) => {
-      const { children } = JSON.data;
-      setPosts(children);
-    });
   };
   return (
     <div>
@@ -34,12 +32,12 @@ function App() {
             <SearchForm
               query={query}
               setQuery={setQuery}
-              searchPosts={searchPosts}
+              handleSearchPosts={handleSearchPosts}
             />
           </div>
           <div className="buttons">
             <a
-              onClick={loadPopular}
+              onClick={handleLoadPopular}
             >
               <i className="icon icon-popular"></i>
             </a>
@@ -49,9 +47,7 @@ function App() {
       <main>
         <div>
           <div>
-            <Posts
-              posts={posts}
-            />
+            <Posts />
           </div>
         </div>
       </main>

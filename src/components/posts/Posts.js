@@ -1,8 +1,13 @@
+import { useSelector } from 'react-redux';
 import Post from "../post/Post.js";
+import { selectPosts, selectIsLoadingPosts } from "./reducer.js";
 
-function Posts({
-  posts
-}) {
+function Posts() {
+  const posts = useSelector(selectPosts);
+  const isLoadingPosts = useSelector(selectIsLoadingPosts);
+  if (isLoadingPosts) return (
+    <p>Loading...</p>
+  )
   return (
     <div className="posts">
       {posts.map(post => (

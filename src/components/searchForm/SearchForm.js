@@ -1,13 +1,13 @@
 function SearchForm({
   query,
   setQuery,
-  searchPosts
+  handleSearchPosts
 }) {
   return (
     <form
       autoComplete="off"
       role="search"
-      onSubmit={searchPosts}
+      onSubmit={handleSearchPosts}
     >
       <label htmlFor="header-search-bar">
         <div aria-hidden="true">

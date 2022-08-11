@@ -19,10 +19,10 @@ function Post({
         <div>{score}</div>
       </div>
       <div className="post-details">
-        <span>Posted by <a href="" target="_blank">u/{author}</a></span>
+        <span>Posted by <a href="" target="_blank" rel="noreferrer">u/{author}</a></span>
       </div>
       <div className="title">
-        <a href={domain + permalink} target="_blank">
+        <a href={domain + permalink} target="_blank" rel="noreferrer">
           <h3>{title}</h3>
         </a>
       </div>
@@ -37,7 +37,7 @@ function Post({
       )}
       </div>
       <div className="comments-container">
-        <a href={domain + permalink} target="_blank">
+        <a href={domain + permalink} target="_blank" rel="noreferrer">
           <i className="icon icon-comment"></i>
           <span>{num_comments} {num_comments === 1 ? "comment" : "comments"}</span>
         </a>
