@@ -13,4 +13,9 @@
 
    [React](https://github.com/facebook/react) web application created using `create-react-app`.
    [Redux](https://github.com/reduxjs/redux) packages:
-  `npm install @reduxjs/toolkit react-redux`
+   `npm install @reduxjs/toolkit react-redux`
+
+## Testing
+
+   [Jest Fetch Mock](https://www.npmjs.com/package/jest-fetch-mock):
+   `npm install jest-fetch-mock`

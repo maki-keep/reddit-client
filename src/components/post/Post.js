@@ -1,16 +1,19 @@
 function Post({
   score,
+  subreddit_name_prefixed,
   author,
   permalink,
   url,
   title,
   media,
+  over_18,
+  spoiler,
   is_video,
   num_comments
 }) {
   const domain = "https://www.reddit.com";
   let fallback_url;
-  if (media !== null && media.hasOwnProperty("reddit_video")) {
+  if (media !== null && media.hasOwnProperty("reddit_video") && !over_18 && !spoiler) {
     ({ fallback_url } = media.reddit_video);
   }
   return (
@@ -19,7 +22,11 @@ function Post({
         <div>{score}</div>
       </div>
       <div className="post-details">
-        <span>Posted by <a href="" target="_blank" rel="noreferrer">u/{author}</a></span>
+        <div className="subreddit">
+          <a href={`${domain}/${subreddit_name_prefixed}/`} target="_blank" rel="noreferrer">{subreddit_name_prefixed}</a>
+        </div>
+        <span role="presentation">•</span>
+        <span>Posted by <a href={`${domain}/user/${author}/`} target="_blank" rel="noreferrer">u/{author}</a></span>
       </div>
       <div className="title">
         <a href={domain + permalink} target="_blank" rel="noreferrer">
@@ -32,7 +39,7 @@ function Post({
           <source src={fallback_url} type="application/vnd.apple.mpegURL" />
         </video>
       )}
-      {(media && is_video === false) && (
+      {(media && is_video === false && !over_18 && !spoiler) && (
         <img alt="Post image" src={url} />
       )}
       </div>

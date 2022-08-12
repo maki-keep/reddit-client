@@ -17,6 +17,9 @@ function App() {
   };
   const handleSearchPosts = (e) => {
     e.preventDefault();
+    if (query === "") {
+      return;
+    }
     dispatch(searchPosts(query));
     // setQuery("");
   };

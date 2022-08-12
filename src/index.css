@@ -16,6 +16,7 @@
   --newRedditTheme-button: #0079D3;
   --newRedditTheme-field: #F6F7F8;
   --newRedditTheme-line: #EDEFF1;
+  --newRedditTheme-navIconFaded10: rgba(26,26,27,0.1);
 }
 body {
   color: var(--newRedditTheme-bodyText);
@@ -170,6 +171,28 @@ main > div > div {
   margin: 0 auto;
   max-width: 100%;
 }
+.loading-container {
+  min-width: 0;
+  padding-top: 8px;
+  width: 100%;
+}
+.loading-container > h3 {
+  color: var(--newCommunityTheme-titleText);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+}
+.error-container {
+  min-width: 0;
+  padding-top: 8px;
+  width: 100%;
+}
+.error-container > h3 {
+  color: var(--newCommunityTheme-titleText);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+}
 .posts {
   min-width: 0;
   width: 100%;
@@ -221,8 +244,18 @@ main > div > div {
   margin: 0 8px 8px;
   position: relative;
 }
+.posts > .post-container > .post-details > .subreddit {
+  color: var(--newRedditTheme-bodyText);
+  display: inline-block;
+}
+.post-details a[href]:hover {
+  text-decoration: underline;
+}
 .posts > .post-container > .post-details > span {
   color: #787C7E;
+}
+.posts > .post-container > .post-details > span[role="presentation"] {
+  margin: 0 4px;
 }
 .posts > .post-container > .title {
   margin: 0 8px;
@@ -248,10 +281,11 @@ main > div > div {
 }
 .media-container > video {
   background-color: #000;
-  z-index: 0;
   height: 100%;
   top: 0;
   left: 0;
+  max-width: 100%;
+  z-index: 0;
 }
 .posts > .post-container > .comments-container {
   font-size: 12px;
@@ -271,6 +305,10 @@ main > div > div {
 .posts > .post-container > .comments-container > a {
   padding: 8px;
   word-break: normal;
+}
+.posts > .post-container > .comments-container > a:hover {
+  background-color: var(--newRedditTheme-navIconFaded10);
+  outline: none;
 }
 .icon-comment:before {
   content: "\f16f";
