@@ -1,3 +1,5 @@
+import DOMPurify from "dompurify";
+
 const api = {
   popularEndpoint: "https://www.reddit.com/r/popular.json",
   searchEndpoint: "https://www.reddit.com/search.json?q=",
@@ -13,7 +15,7 @@ const api = {
   },
   searchPosts: async (query) => {
     try {
-      const queryURI = encodeURIComponent(query);
+      const queryURI = encodeURIComponent(DOMPurify.sanitize(query));
       const response = await fetch(api.searchEndpoint + queryURI);
       const JSON_response = await response.json();
       console.log(JSON_response);

@@ -23,6 +23,14 @@ function App() {
     dispatch(searchPosts(query));
     // setQuery("");
   };
+  const maxLengthCheck = (e) => {
+    const maxLength = 50;
+    let { value } = e.target;
+    if (value.length > maxLength) {
+      return value.slice(0, maxLength);
+    }
+    return value;
+  };
   return (
     <div>
       <header className="App-header">
@@ -36,6 +44,7 @@ function App() {
               query={query}
               setQuery={setQuery}
               handleSearchPosts={handleSearchPosts}
+              maxLengthCheck={maxLengthCheck}
             />
           </div>
           <div className="buttons">

@@ -52,6 +52,7 @@ header > nav {
   flex-direction: row;
   -ms-flex-positive: 1;
   flex-grow: 1;
+  justify-content: center;
   margin-right: auto;
   padding: 0 20px;
   width: 100%;
@@ -81,7 +82,7 @@ header > nav > #search {
   flex-grow: 1;
   margin-left: 16px;
   margin-right: 16px;
-  width: auto;
+  max-width: 690px;
   height: auto;
 }
 #search > form {
@@ -93,8 +94,6 @@ header > nav > #search {
   border-radius: 4px;
   box-shadow: none;
   height: 36px;
-  max-width: -moz-fit-content;
-  max-width: fit-content;
 }
 #search > form:hover {
   background-color: var(--newRedditTheme-body);
@@ -126,13 +125,29 @@ input[type="search"] {
 #search > form:hover > input[type="search"] {
   background-color: var(--newRedditTheme-body);
 }
-header > nav > .buttons {
+.buttons {
   -ms-flex-align: center;
   align-items: center;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: row;
   flex-direction: row;
+}
+.buttons > a {
+  border-radius: 2px;
+  color: var(--newCommunityTheme-navIcon);
+  height: 32px;
+  padding: 0;
+  position: relative;
+  width: 32px;
+}
+.buttons > a > .icon {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .icon {
   font-size: 20px;
@@ -281,10 +296,11 @@ main > div > div {
 }
 .media-container > video {
   background-color: #000;
-  height: 100%;
-  top: 0;
-  left: 0;
+  background-size: cover;
+  display: inline-block;
+  max-height: inherit;
   max-width: 100%;
+  vertical-align: middle;
   z-index: 0;
 }
 .posts > .post-container > .comments-container {

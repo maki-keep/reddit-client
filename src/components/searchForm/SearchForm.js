@@ -1,7 +1,8 @@
 function SearchForm({
   query,
   setQuery,
-  handleSearchPosts
+  handleSearchPosts,
+  maxLengthCheck
 }) {
   return (
     <form
@@ -20,7 +21,7 @@ function SearchForm({
         name="q"
         placeholder="Search Reddit"
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={(e) => setQuery(maxLengthCheck(e))}
       />
     </form>
   );
