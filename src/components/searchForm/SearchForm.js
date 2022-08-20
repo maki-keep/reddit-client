@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+
 function SearchForm({
   query,
   setQuery,
@@ -12,7 +15,7 @@ function SearchForm({
     >
       <label htmlFor="header-search-bar">
         <div aria-hidden="true">
-          <i className="icon icon-search"></i>
+          <FontAwesomeIcon icon={faMagnifyingGlass} className="icon icon-search" />
         </div>
       </label>
       <input
@@ -20,6 +23,7 @@ function SearchForm({
         id="header-search-bar"
         name="q"
         placeholder="Search Reddit"
+        autoFocus
         value={query}
         onChange={(e) => setQuery(maxLengthCheck(e))}
       />

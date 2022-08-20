@@ -7,7 +7,7 @@ const api = {
     try {
       const response = await fetch(api.popularEndpoint);
       const JSON_response = await response.json();
-      console.log(JSON_response);
+      // console.log(JSON_response);
       return JSON_response;
     } catch(e) {
       console.log(e);
@@ -18,7 +18,7 @@ const api = {
       const queryURI = encodeURIComponent(DOMPurify.sanitize(query));
       const response = await fetch(api.searchEndpoint + queryURI);
       const JSON_response = await response.json();
-      console.log(JSON_response);
+      // console.log(JSON_response);
       return JSON_response;
     } catch(e) {
       console.log(e);

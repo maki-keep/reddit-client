@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMessage } from '@fortawesome/free-regular-svg-icons';
+
 function Post({
   score,
   subreddit_name_prefixed,
@@ -44,8 +47,11 @@ function Post({
       )}
       </div>
       <div className="comments-container">
+        <div className="score score-bottom">
+          <div>{score}</div>
+        </div>
         <a href={domain + permalink} target="_blank" rel="noreferrer">
-          <i className="icon icon-comment"></i>
+          <FontAwesomeIcon icon={faMessage} className="icon icon-comment" />
           <span>{num_comments} {num_comments === 1 ? "comment" : "comments"}</span>
         </a>
       </div>

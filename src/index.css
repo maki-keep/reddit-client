@@ -4,7 +4,6 @@
 }
 :root {
   --canvas: #DAE0E6;
-  --newCommunityTheme-actionIcon: #878A8C;
   --newCommunityTheme-body: #FFFFFF;
   --newCommunityTheme-line: #EDEFF1;
   --newCommunityTheme-navIcon: #1A1A1B;
@@ -12,6 +11,7 @@
   --newCommunityTheme-postIcon: #898989;
   --newCommunityTheme-postLine: #CCC;
   --newCommunityTheme-titleText: #222222;
+  --newRedditTheme-actionIcon: #878A8C;
   --newRedditTheme-bodyText: #1C1C1C;
   --newRedditTheme-button: #0079D3;
   --newRedditTheme-field: #F6F7F8;
@@ -40,7 +40,7 @@ header {
   z-index: 80;
   margin-top: 0;
 }
-header > nav {
+nav {
   -ms-flex-align: center;
   align-items: center;
   display: -ms-inline-flexbox;
@@ -57,7 +57,7 @@ header > nav {
   padding: 0 20px;
   width: 100%;
 }
-header > nav > a {
+nav > a {
   -ms-flex-align: center;
   align-items: center;
   display: -ms-inline-flexbox;
@@ -76,7 +76,7 @@ header > nav > a {
   margin-right: 20px;
   width: auto;
 }
-header > nav > #search {
+#search {
   fill: var(--newCommunityTheme-navIcon);
   -ms-flex-positive: 1;
   flex-grow: 1;
@@ -141,6 +141,10 @@ input[type="search"] {
   position: relative;
   width: 32px;
 }
+.buttons > a:hover, .buttons > a:focus {
+  background-color: var(--newRedditTheme-field);
+  cursor: pointer;
+}
 .buttons > a > .icon {
   bottom: 0;
   left: 0;
@@ -157,11 +161,10 @@ input[type="search"] {
   vertical-align: middle;
   width: 20px;
 }
-.icon-search:before {
-  content: "\f278";
-}
-.icon-popular:before {
-  content: "\f239";
+.icon-search {
+  color: var(--newRedditTheme-actionIcon);
+  position: relative;
+  top: 1px;
 }
 main {
   background-color: var(--canvas);
@@ -215,7 +218,7 @@ main > div > div {
 .posts > .post-container {
   background-color: var(--newCommunityTheme-post);
   border: 1px solid var(--newCommunityTheme-postLine);
-  color: var(--newCommunityTheme-actionIcon);
+  color: var(--newRedditTheme-actionIcon);
   margin-bottom: 10px;
   overflow: hidden;
   padding-top: 8px;
@@ -228,8 +231,7 @@ main > div > div {
   -ms-flex-align: center;
   align-items: center;
   box-sizing: border-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -ms-flex-direction: column;
   flex-direction: column;
   left: 0;
@@ -287,14 +289,14 @@ main > div > div {
   max-height: 512px;
   width: 100%;
 }
-.media-container > img {
+.posts > .post-container > .media-container > img {
   display: block;
   max-height: 512px;
   max-width: 100%;
   position: relative;
   background-color: var(--newCommunityTheme-post);
 }
-.media-container > video {
+.posts > .post-container > .media-container > video {
   background-color: #000;
   background-size: cover;
   display: inline-block;
@@ -318,6 +320,24 @@ main > div > div {
   -ms-flex-positive: 1;
   flex-grow: 1;
 }
+.posts > .post-container > .comments-container > .score.score-bottom {
+  -ms-flex-align: center;
+  align-items: center;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin: 0;
+  padding: 0 2px;
+}
+.posts > .post-container > .comments-container > .score.score-bottom > div {
+  color: rgb(26, 26, 27);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  pointer-events: none;
+  word-break: normal;
+}
 .posts > .post-container > .comments-container > a {
   padding: 8px;
   word-break: normal;
@@ -326,8 +346,9 @@ main > div > div {
   background-color: var(--newRedditTheme-navIconFaded10);
   outline: none;
 }
-.icon-comment:before {
-  content: "\f16f";
+.posts > .post-container > .comments-container > a > .icon {
+  margin: 4px;
+  margin-right: 8px;
 }
 .posts > .post-container > .comments-container > a > span {
   display: inline-block;
@@ -344,13 +365,18 @@ main > div > div {
   main > div > div {
     padding: 20px 24px;
   }
+  .posts {
+    max-width: 640px;
+  }
   .posts > .post-container {
     border-radius: 4px;
     padding-left: 40px;
   }
-}
-@media (min-width: 960px) {
-  .posts {
-    width: 640px;
+  .posts > .post-container > .score.score-left {
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .posts > .post-container > .comments-container > .score.score-bottom {
+    display: none;
   }
 }
