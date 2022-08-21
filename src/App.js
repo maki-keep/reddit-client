@@ -58,6 +58,7 @@ function App() {
             <a
               id="popular"
               tabIndex="0"
+              rel="nofollow"
               onClick={handleLoadPopular}
             >
               <FontAwesomeIcon icon={faArrowTrendUp} className="icon icon-popular" />

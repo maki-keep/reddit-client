@@ -9,8 +9,9 @@ const api = {
       const JSON_response = await response.json();
       // console.log(JSON_response);
       return JSON_response;
-    } catch(e) {
-      console.log(e);
+    } catch(err) {
+      // console.log(e);
+      throw new Error('Error', { cause: err });
     }
   },
   searchPosts: async (query) => {
@@ -20,8 +21,9 @@ const api = {
       const JSON_response = await response.json();
       // console.log(JSON_response);
       return JSON_response;
-    } catch(e) {
-      console.log(e);
+    } catch(err) {
+      // console.log(e);
+      throw new Error('Error', { cause: err });
     }
   }
 }
