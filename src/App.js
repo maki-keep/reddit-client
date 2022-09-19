@@ -55,14 +55,13 @@ function App() {
             />
           </div>
           <div className="buttons">
-            <a
+            <button
               id="popular"
-              tabIndex="0"
-              rel="nofollow"
+              aria-label="Load popular posts"
               onClick={handleLoadPopular}
             >
               <FontAwesomeIcon icon={faArrowTrendUp} className="icon icon-popular" />
-            </a>
+            </button>
           </div>
         </nav>
       </header>

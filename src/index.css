@@ -133,7 +133,8 @@ input[type="search"] {
   -ms-flex-direction: row;
   flex-direction: row;
 }
-.buttons > a {
+.buttons > button {
+  border: 0;
   border-radius: 2px;
   color: var(--newCommunityTheme-navIcon);
   height: 32px;
@@ -141,11 +142,11 @@ input[type="search"] {
   position: relative;
   width: 32px;
 }
-.buttons > a:hover, .buttons > a:focus {
+.buttons > button:hover, .buttons > button:focus {
   background-color: var(--newRedditTheme-field);
   cursor: pointer;
 }
-.buttons > a > .icon {
+.buttons > button > .icon {
   bottom: 0;
   left: 0;
   margin: auto;
